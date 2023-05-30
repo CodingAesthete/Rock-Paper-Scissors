@@ -5,6 +5,7 @@ const score = JSON.parse(localStorage.getItem('score')) || {
 };
 
 function playGame(playerMove) {
+  player=playerMove;
   let compMove = computerMove();
 
   let result = '';
@@ -89,4 +90,21 @@ function resetScore() {
   score.ties = 0;
   localStorage.removeItem('score');
   updateScore();
+}
+
+let isAutoPlay=false;
+let interval;
+
+function autoPlay() {
+  if (!isAutoPlay) {
+    isAutoPlay=true;
+    interval=setInterval( function() {
+      const playerMove= computerMove();
+      playGame(playerMove);
+    },1000);
+  }
+  else {
+    autoPlay=false;
+    clearInterval(interval);
+  }
 }
