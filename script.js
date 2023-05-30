@@ -4,6 +4,18 @@ const score = JSON.parse(localStorage.getItem('score')) || {
   ties: 0
 };
 
+document.querySelector('.rock-btn').addEventListener('click', function(){
+  playGame('rock');
+});
+
+document.querySelector('.paper-btn').addEventListener('click', function(){
+  playGame('paper');
+});
+
+document.querySelector('.scissors-btn').addEventListener('click', function(){
+  playGame('scissors');
+});
+
 function playGame(playerMove) {
   player=playerMove;
   let compMove = computerMove();
